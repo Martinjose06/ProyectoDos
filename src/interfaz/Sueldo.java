@@ -5,6 +5,8 @@
  */
 package interfaz;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author LUCYLEONOR
@@ -58,6 +60,12 @@ public class Sueldo extends javax.swing.JFrame {
         jLabel3.setText("Núm. De Hijos");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
         jPanel1.add(txtS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 90, -1));
+
+        txtH.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtHKeyPressed(evt);
+            }
+        });
         jPanel1.add(txtH, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 80, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
@@ -79,15 +87,75 @@ public class Sueldo extends javax.swing.JFrame {
         jPanel1.add(lblT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 120, 40));
 
         cmdCalcular.setText("Calcular");
+        cmdCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdCalcularActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, -1, -1));
 
         cmdRestaurar.setText("Restaurar");
+        cmdRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRestaurarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdRestaurar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
+
+        double s,h,t,b;
+        String r,r1;
+        
+        s = Double.parseDouble(txtS.getText());
+        h = Double.parseDouble(txtH.getText());
+        
+        b = 80000 * h;
+        t = s + b;
+        
+        r = String.valueOf(b);
+        r1 = String.valueOf(t);
+        
+        lblB.setText(r);
+        lblT.setText(r1);
+    }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRestaurarActionPerformed
+
+        txtS.setText("");
+        txtH.setText("");
+        lblB.setText("");
+        lblT.setText("");
+        txtS.requestFocusInWindow();
+        
+    }//GEN-LAST:event_cmdRestaurarActionPerformed
+
+    private void txtHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+           
+        double s,h,t,b;
+        String r,r1;
+        
+        s = Double.parseDouble(txtS.getText());
+        h = Double.parseDouble(txtH.getText());
+        
+        b = 80000 * h;
+        t = s + b;
+        
+        r = String.valueOf(b);
+        r1 = String.valueOf(t);
+        
+        lblB.setText(r);
+        lblT.setText(r1);
+            
+        }
+    }//GEN-LAST:event_txtHKeyPressed
 
     /**
      * @param args the command line arguments
