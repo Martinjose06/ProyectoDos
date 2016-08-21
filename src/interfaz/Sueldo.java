@@ -6,6 +6,7 @@
 package interfaz;
 
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -59,11 +60,23 @@ public class Sueldo extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         jLabel3.setText("Núm. De Hijos");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
+
+        txtS.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtS, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 90, -1));
 
         txtH.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtHKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtHKeyTyped(evt);
             }
         });
         jPanel1.add(txtH, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 60, 80, -1));
@@ -109,20 +122,35 @@ public class Sueldo extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
 
-        double s,h,t,b;
-        String r,r1;
-        
-        s = Double.parseDouble(txtS.getText());
-        h = Double.parseDouble(txtH.getText());
-        
-        b = 80000 * h;
-        t = s + b;
-        
-        r = String.valueOf(b);
-        r1 = String.valueOf(t);
-        
-        lblB.setText(r);
-        lblT.setText(r1);
+        if (txtS.getText().trim().isEmpty() && txtH.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Anteriormente Solicitados", "Error", JOptionPane.ERROR_MESSAGE);
+            txtS.requestFocusInWindow();
+        }
+
+        else if (txtS.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ha Ingresado El Sueldo", "Error", JOptionPane.ERROR_MESSAGE);
+            txtS.requestFocusInWindow();
+        }
+        else if (txtH.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ha Ingresado El Numero De Hijos", "Error", JOptionPane.ERROR_MESSAGE);
+            txtH.requestFocusInWindow();
+        } else {
+
+            double s, h, t, b;
+            String r, r1;
+
+            s = Double.parseDouble(txtS.getText());
+            h = Double.parseDouble(txtH.getText());
+
+            b = 80000 * h;
+            t = s + b;
+
+            r = String.valueOf(b);
+            r1 = String.valueOf(t);
+
+            lblB.setText(r);
+            lblT.setText(r1);
+        }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRestaurarActionPerformed
@@ -132,30 +160,97 @@ public class Sueldo extends javax.swing.JFrame {
         lblB.setText("");
         lblT.setText("");
         txtS.requestFocusInWindow();
-        
+
     }//GEN-LAST:event_cmdRestaurarActionPerformed
 
     private void txtHKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHKeyPressed
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-           
-        double s,h,t,b;
-        String r,r1;
-        
-        s = Double.parseDouble(txtS.getText());
-        h = Double.parseDouble(txtH.getText());
-        
-        b = 80000 * h;
-        t = s + b;
-        
-        r = String.valueOf(b);
-        r1 = String.valueOf(t);
-        
-        lblB.setText(r);
-        lblT.setText(r1);
-            
+            if (txtS.getText().trim().isEmpty() && txtH.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Anteriormente Solicitados", "Error", JOptionPane.ERROR_MESSAGE);
+                txtS.requestFocusInWindow();
+            }
+
+            else if (txtS.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ha Ingresado El Sueldo", "Error", JOptionPane.ERROR_MESSAGE);
+                txtS.requestFocusInWindow();
+            }
+            else if (txtH.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ha Ingresado El Numero De Hijos", "Error", JOptionPane.ERROR_MESSAGE);
+                txtH.requestFocusInWindow();
+            } else {
+
+                double s, h, t, b;
+                String r, r1;
+
+                s = Double.parseDouble(txtS.getText());
+                h = Double.parseDouble(txtH.getText());
+
+                b = 80000 * h;
+                t = s + b;
+
+                r = String.valueOf(b);
+                r1 = String.valueOf(t);
+
+                lblB.setText(r);
+                lblT.setText(r1);
+            }
+
         }
     }//GEN-LAST:event_txtHKeyPressed
+
+    private void txtSKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            if (txtS.getText().trim().isEmpty() && txtH.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Anteriormente Solicitados", "Error", JOptionPane.ERROR_MESSAGE);
+                txtS.requestFocusInWindow();
+            }
+
+            else if (txtS.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ha Ingresado El Sueldo", "Error", JOptionPane.ERROR_MESSAGE);
+                txtS.requestFocusInWindow();
+            }
+            else if (txtH.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ha Ingresado El Numero De Hijos", "Error", JOptionPane.ERROR_MESSAGE);
+                txtH.requestFocusInWindow();
+            } else {
+
+                double s, h, t, b;
+                String r, r1;
+
+                s = Double.parseDouble(txtS.getText());
+                h = Double.parseDouble(txtH.getText());
+
+                b = 80000 * h;
+                t = s + b;
+
+                r = String.valueOf(b);
+                r1 = String.valueOf(t);
+
+                lblB.setText(r);
+                lblT.setText(r1);
+            }
+
+        }
+    }//GEN-LAST:event_txtSKeyPressed
+
+    private void txtSKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtSKeyTyped
+
+    private void txtHKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtHKeyTyped
 
     /**
      * @param args the command line arguments
